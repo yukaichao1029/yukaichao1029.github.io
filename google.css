@@ -1,0 +1,107 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: arial;
+}
+
+body {
+  background-color: black;
+}
+
+a {
+  text-decoration: none;
+  padding: 1px;
+  margin: 1px;
+  background-color: black;
+  margin: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#nav {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+#nav>div {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#nav>div>div {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+}
+
+#nav>div>div>img {
+  height: 30px;
+  width: 30px;
+}
+
+svg {
+  height: 30px;
+  color: red;
+}
+
+#logo {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+form {
+  justify-content: center;
+}
+
+#search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 44px;
+  width: 584px;
+  margin: 10px auto;
+  border: white solid 1px;
+  border-radius: 22px;
+}
+
+#search svg {
+  width: 25px;
+}
+
+#word {
+  background-color: black;
+  border: none;
+  font-size: 20px;
+  width: 470px;
+  height: 30px;
+}
+
+#word:focus {
+  outline: none;
+}
+
+#zoom {
+  filter: invert(68%) sepia(0%) saturate(543%) hue-rotate(46deg) brightness(95%) contrast(86%);
+}
+
+#button {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.submit {
+  margin: 10px;
+  border: none;
+  text-align: center;
+  background-color: black;
+}

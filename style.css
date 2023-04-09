@@ -2,17 +2,39 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
+  text-align:center;
 }
-#container{
-  background-color:red;
-  padding:20px;
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
+body{
+  background-color:yellow;
 }
-#container div{
-  margin:20px;
+#avatar{
   height:100px;
   width:100px;
   background-color:blue;
+  background-image:url(img/chicken.webp);
+  background-size:cover;
+  border-radius:50px;
+  margin:auto;
+  transition:width .1s,height .1s;
+}
+#avatar:hover{
+  height:120px;
+  width:120px;
+}
+a{
+  text-decoration:none;
+  display:block;
+  width:calc(70%-20px);
+  background-color:lightblue;
+  margin:10px;
+  padding:10px;
+  border-radius:20px;
+  box-shadow:5px 5px 5px black;
+  border:green solid 1px;
+}
+a:hover{
+  background-color:blue;
+}
+a:active{
+  background-color:red;
 }
