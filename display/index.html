@@ -6,33 +6,34 @@
     <title>顯示 Google Drive</title>
 </head>
 <body>
-    <h2>Google Drive 資料夾圖片</h2>
+    <h2>Google Drive</h2>
     <div id="image-gallery"></div>
 
     <script>
-        const folderId = "1B3j_P0PuYFrEQsDE-f2J1k5Y-EiLMs4c"; // 你的資料夾 ID
-        const apiKey = "AIzaSyBjE1Q2zv_lzVgf-QVdxwSMP_PFi4N0GQQ"; // 你的 API Key
-
         async function fetchImages() {
-            const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`;
+    const folderId = "1B3j_P0PuYFrEQsDE-f2J1k5Y-EiLMs4c;
+    const apiKey = "AIzaSyBjE1Q2zv_lzVgf-QVdxwSMP_PFi4N0GQQ";
+    const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`;
 
-            const response = await fetch(url);
-            const data = await response.json();
+    const response = await fetch(url);
+    const data = await response.json();
 
-            if (data.files) {
-                const gallery = document.getElementById("image-gallery");
-                data.files.forEach(file => {
-                    if (file.mimeType.startsWith("image/")) {
-                        const img = document.createElement("img");
-                        img.src = `https://drive.google.com/uc?id=${file.id}`;
-                        img.style = "max-width: 100%; margin: 10px;";
-                        gallery.appendChild(img);
-                    }
-                });
+    if (data.files) {
+        const gallery = document.getElementById("image-gallery");
+        gallery.innerHTML = ""; // 清空內容以免重複載入
+
+        data.files.forEach(file => {
+            if (file.mimeType.startsWith("image/")) {
+                const img = document.createElement("img");
+                img.src = `https://lh3.googleusercontent.com/d/${file.id}`;
+                img.style = "max-width: 100%; margin: 10px;";
+                gallery.appendChild(img);
             }
-        }
+        });
+    }
+}
 
-        fetchImages();
+fetchImages();
     </script>
 </body>
 </html>
