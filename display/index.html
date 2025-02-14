@@ -1,8 +1,38 @@
-<html>
-  <head>
-    <title>img</title>
-  </head>
-  <body>
-    <img src="https://lh3.googleusercontent.com/d/16ut4bM99jNB7YF2qxHhTNOUygp3cn_gs" alt="Google Drive 圖片" />
-  </body>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>顯示 Google Drive 資料夾內的所有圖片</title>
+</head>
+<body>
+    <h2>Google Drive 資料夾圖片</h2>
+    <div id="image-gallery"></div>
+
+    <script>
+        const folderId = "1B3j_P0PuYFrEQsDE-f2J1k5Y-EiLMs4c"; // 你的資料夾 ID
+        const apiKey = "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"; // 你的 API Key
+
+        async function fetchImages() {
+            const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`;
+
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.files) {
+                const gallery = document.getElementById("image-gallery");
+                data.files.forEach(file => {
+                    if (file.mimeType.startsWith("image/")) {
+                        const img = document.createElement("img");
+                        img.src = `https://drive.google.com/uc?id=${file.id}`;
+                        img.style = "max-width: 100%; margin: 10px;";
+                        gallery.appendChild(img);
+                    }
+                });
+            }
+        }
+
+        fetchImages();
+    </script>
+</body>
 </html>
