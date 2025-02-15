@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>顯示 Google Drive</title>
+    <title>顯示 Google</title>
 </head>
 <body>
     <h2>Google Drive</h2>
@@ -17,13 +17,14 @@
 
     const response = await fetch(url);
     const data = await response.json();
-
+    console.log("API 回傳結果：", data);
     if (data.files) {
         const gallery = document.getElementById("image-gallery");
         gallery.innerHTML = ""; // 清空內容以免重複載入
 
         data.files.forEach(file => {
             if (file.mimeType.startsWith("image/")) {
+                console.log("正在加入圖片：", file);
                 const img = document.createElement("img");
                 img.src = `https://lh3.googleusercontent.com/d/${file.id}`;
                 img.style = "max-width: 100%; margin: 10px;";
@@ -31,6 +32,7 @@
             }
         });
     }
+    else console.log("⚠️ API 沒有回傳任何檔案，請檢查資料夾權限或 API 設定");
 }
 
 fetchImages();
